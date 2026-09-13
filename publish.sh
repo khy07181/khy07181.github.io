@@ -64,7 +64,18 @@ case "$MODE" in
     # v5로 전환 + 원격과 동기화
     git switch "$BRANCH"
     git fetch origin "$BRANCH" --quiet
-    git merge --ff-only "origin/$BRANCH" 2>/dev/null || true
+
+    # preview/sync가 남긴 미커밋 content 변경은 ff-merge를 막는다.
+    # content는 아래 sync_vault가 vault에서 다시 만드므로 버려도 안전하다.
+    git restore --source=HEAD --staged --worktree -- content
+    git clean -qfd content
+
+    # 원격과 ff 동기화 실패 시 중단 (뒤처진 커밋 위에 발행하면 push가 거부된다)
+    if ! git merge --ff-only "origin/$BRANCH"; then
+      echo "✗ origin/$BRANCH와 fast-forward 동기화 실패 (로컬이 원격과 갈라졌습니다)." >&2
+      echo "  git log --oneline v5..origin/$BRANCH 로 확인 후 수동 정리하세요." >&2
+      exit 1
+    fi
 
     sync_vault
 
