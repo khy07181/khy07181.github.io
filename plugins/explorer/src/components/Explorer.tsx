@@ -30,9 +30,11 @@ const defaultOptions = {
     return node
   },
   sortFn: (a, b) => {
-    // Keep folders before files
-    const aIsFolder = !a.file
-    const bIsFolder = !b.file
+    // Keep folders before files. A node counts as a folder when it has children,
+    // not when it lacks a page of its own: FolderPage's virtual `<year>/index`
+    // pages give the year nodes a page, and page-bundle posts carry theirs.
+    const aIsFolder = a.children.length > 0
+    const bIsFolder = b.children.length > 0
 
     if (aIsFolder && bIsFolder) {
       // Folders: name DESC (reverse alphabetical). Use numeric collation.

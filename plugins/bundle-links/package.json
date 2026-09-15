@@ -1,0 +1,25 @@
+{
+  "name": "@local/bundle-links",
+  "version": "1.0.0",
+  "description": "Resolves basename wikilinks to page-bundle slugs (post/post.md -> post/index) before CrawlLinks",
+  "type": "module",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": { "import": "./dist/index.js" },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "engines": { "node": ">=22" },
+  "quartz": {
+    "name": "bundle-links",
+    "displayName": "Bundle Links",
+    "category": "transformer",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "dependencies": [],
+    "defaultOrder": 55,
+    "defaultEnabled": true,
+    "defaultOptions": {}
+  }
+}

@@ -84,10 +84,19 @@ export class FileNode {
     // base case, insert here
     if (fileData.path.length === 1) {
       if (nextSegment === "") {
-        // index case (we are the root and we just found index.md), set our data appropriately
+        // Index case: this node's own page. Either the root (content/index.md) or a
+        // page bundle -- a folder whose page is `<folder>/<folder>.md`, which Quartz
+        // slugifies to `<folder>/index`. Blog posts are page bundles, so without the
+        // file here they would render as empty expandable folders instead of links.
         const title = fileData.file.frontmatter?.title
         if (title && title !== "index") {
           this.displayName = title
+        }
+        // The vault root's own index.md lands here too (its slug simplifies to "/",
+        // which splits into two empty segments). That node is unnamed and must stay
+        // invisible, so only a named bundle folder adopts the page.
+        if (this.name !== "") {
+          this.file = clone(fileData.file)
         }
       } else {
         // direct child
@@ -147,8 +156,11 @@ export class FileNode {
   getFolderPaths(collapsed: boolean): FolderState[] {
     const folderPaths: FolderState[] = []
 
+    // A node is a folder when it has children, not merely when it lacks a page of
+    // its own: a page bundle carries both (see `insert`), and a childless one is a
+    // plain link.
     const traverse = (node: FileNode, currentPath: string) => {
-      if (!node.file) {
+      if (node.children.length > 0) {
         const folderPath = joinSegments(currentPath, node.name)
         if (folderPath !== "") {
           folderPaths.push({ path: folderPath, collapsed })
@@ -250,8 +262,9 @@ export function ExplorerNode({ node, opts, fullPath, fileData, expandedYear }: E
 
   return (
     <>
-      {node.file ? (
-        // Single file node
+      {node.file && node.children.length === 0 ? (
+        // Single file node -- including a page bundle, whose folder holds only its
+        // own page. A folder that has both a page and children stays a folder.
         <li key={node.file.slug}>
           <a href={resolveRelative(fileData.slug!, node.file.slug!)} data-for={node.file.slug}>
             {node.displayName}

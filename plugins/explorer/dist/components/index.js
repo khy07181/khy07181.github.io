@@ -417,6 +417,9 @@ var FileNode = class _FileNode {
         if (title && title !== "index") {
           this.displayName = title;
         }
+        if (this.name !== "") {
+          this.file = clone(fileData.file);
+        }
       } else {
         this.children.push(new _FileNode(nextSegment, void 0, fileData.file, this.depth + 1));
       }
@@ -466,7 +469,7 @@ var FileNode = class _FileNode {
   getFolderPaths(collapsed) {
     const folderPaths = [];
     const traverse = (node, currentPath) => {
-      if (!node.file) {
+      if (node.children.length > 0) {
         const folderPath = joinSegments(currentPath, node.name);
         if (folderPath !== "") {
           folderPaths.push({ path: folderPath, collapsed });
@@ -533,8 +536,9 @@ function ExplorerNode({ node, opts, fullPath, fileData, expandedYear }) {
   const isExpandedYear = expandedYear !== void 0 && node.name === expandedYear;
   const folderPath = node.name !== "" ? joinSegments(fullPath ?? "", node.name) : "";
   const href = resolveRelative(fileData.slug, folderPath) + "/";
-  return /* @__PURE__ */ jsx(Fragment, { children: node.file ? (
-    // Single file node
+  return /* @__PURE__ */ jsx(Fragment, { children: node.file && node.children.length === 0 ? (
+    // Single file node -- including a page bundle, whose folder holds only its
+    // own page. A folder that has both a page and children stays a folder.
     /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx("a", { href: resolveRelative(fileData.slug, node.file.slug), "data-for": node.file.slug, children: node.displayName }) }, node.file.slug)
   ) : /* @__PURE__ */ jsxs("li", { children: [
     node.name !== "" && // Node with entire folder
@@ -599,8 +603,8 @@ var defaultOptions = {
     return node;
   },
   sortFn: (a, b) => {
-    const aIsFolder = !a.file;
-    const bIsFolder = !b.file;
+    const aIsFolder = a.children.length > 0;
+    const bIsFolder = b.children.length > 0;
     if (aIsFolder && bIsFolder) {
       return b.displayName.localeCompare(a.displayName, void 0, {
         numeric: true,

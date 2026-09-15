@@ -80,6 +80,12 @@ plugins:
       position: right
       priority: 30
       display: desktop-only
+  # local transformer: posts are page bundles (post/post.md), so every post slug
+  # ends in `index` and crawl-links' `shortest` strategy can no longer match a
+  # bare `[[post]]`. Rewrites those hrefs to the folder form. Must run first.
+  - source: ./plugins/bundle-links
+    enabled: true
+    order: 55
   - source: github:quartz-community/crawl-links
     enabled: true
     options:
