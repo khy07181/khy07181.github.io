@@ -95,7 +95,9 @@ export default ((userOpts?: Partial<Options>) => {
   // `new Date().getFullYear()`, which Quartz v5 forbids for reproducible builds.
   function computeExpandedYear(tree: FileNode): string | undefined {
     const yearFolders = tree.children
-      .filter((c) => !c.file && /^\d+$/.test(c.name))
+      // Folder by children, not by the absence of a page: FolderPage emits a
+      // virtual `<year>/index`, so a year node carries a page of its own.
+      .filter((c) => c.children.length > 0 && /^\d+$/.test(c.name))
       .map((c) => c.name)
     if (yearFolders.length === 0) return undefined
     return yearFolders.sort((a, b) =>

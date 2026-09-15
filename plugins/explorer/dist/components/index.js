@@ -644,7 +644,7 @@ var Explorer_default = ((userOpts) => {
   let expandedYear;
   let lastBuildId = "";
   function computeExpandedYear(tree) {
-    const yearFolders = tree.children.filter((c) => !c.file && /^\d+$/.test(c.name)).map((c) => c.name);
+    const yearFolders = tree.children.filter((c) => c.children.length > 0 && /^\d+$/.test(c.name)).map((c) => c.name);
     if (yearFolders.length === 0) return void 0;
     return yearFolders.sort(
       (a, b) => b.localeCompare(a, void 0, { numeric: true, sensitivity: "base" })
