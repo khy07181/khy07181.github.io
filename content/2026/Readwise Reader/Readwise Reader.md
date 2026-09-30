@@ -15,7 +15,7 @@ draft: false
 published: 2026-07-19T19:47:00
 lang: ko
 created: 2026-07-19T12:39
-updated: 2026-09-14T16:52
+updated: 2026-09-30T14:47
 ---
 [Readwise Reader](https://readwise.io/read)는 모든 읽을 거리를 한곳에 모아 두고, 나중에 집중해서 읽고 하이라이트하고 정리할 수 있게 해주는 read-it-later 도구다.
 
@@ -118,11 +118,14 @@ Readwise Reader는 '나중에 읽을 것을 저장하는 앱'이자 읽고 기�
 무료로 쓸 수 있는 앱이 많은 범주에서 유료 구독이라는 점은 분명한 진입 장벽이다. 하지만 읽는 양이 많고, 읽은 것을 기록으로 남겨 다시 쓰고 싶은 사람이라면, 그 비용이 아깝지 않은 몇 안 되는 도구라고 생각한다.
 - 무료 대안으로는 [Raindrop](https://raindrop.io/) 도 좋은 것 같다.
 
+Readwise Reader를 써 보고 싶다면 [내 추천 링크](https://readwise.io/i/hayoung3)로 가입할 경우 30일 추가 무료 체험 기간을 사용할 수 있다.
+
 ---
 
 ### Links
 
 - [Readwise Reader](https://readwise.io/read)
+- [Readwise 추천 링크](https://readwise.io/i/hayoung3)
 - [Chrome Web Store - Readwise Highlighter](https://chromewebstore.google.com/detail/readwise-highlighter/jjhefcfhmnkfeepcpnilbbkaadhngkbi)
 - [새로운 읽는 경험: Reader by Readwise](https://www.canda.blog/reader-by-readwise/)
 
