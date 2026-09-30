@@ -86,7 +86,7 @@ case "$MODE" in
     fi
 
     echo "=== 발행될 변경 ==="
-    git diff --cached --stat -- content
+    git --no-pager diff --cached --stat -- content
 
     git commit -m "publish: sync notes from vault ($(date '+%Y-%m-%d %H:%M'))"
     git push origin "$BRANCH"
