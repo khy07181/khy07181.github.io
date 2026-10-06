@@ -44,6 +44,10 @@ cat > "$OUT/404.html" <<'EOF'
 </head><body><p>이 블로그는 <a href="https://dochigarden.com/blog/">dochigarden.com/blog</a> 로 이사했습니다.</p></body></html>
 EOF
 
+# RSS 리더는 JS/meta 리다이렉트를 못 따라가므로 구 피드 주소에는 새 피드 사본을 둔다.
+# (피드 안의 링크는 이미 dochigarden.com/blog 를 가리킴 → 기존 구독자도 새 글을 계속 받음)
+cp "$SRC/index.xml" "$OUT/index.xml"
+
 # 구글이 리다이렉트를 따라갈 수 있도록 크롤링 허용
 printf "User-agent: *\nAllow: /\n" > "$OUT/robots.txt"
 touch "$OUT/.nojekyll"
