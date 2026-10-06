@@ -49,9 +49,9 @@ sync_vault() {
 case "$MODE" in
   preview)
     sync_vault
-    echo "▶ 미리보기: vault를 content에 반영했습니다(미커밋). http://localhost:8080"
+    echo "▶ 미리보기: vault를 content에 반영했습니다(미커밋). http://localhost:8080/blog"
     echo "  종료(Ctrl-C) 후 발행하려면 ./publish.sh, 되돌리려면 git checkout -- content"
-    exec npx quartz build --serve
+    exec npx quartz build --serve --baseDir blog
     ;;
 
   sync)

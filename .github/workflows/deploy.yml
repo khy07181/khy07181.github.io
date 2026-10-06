@@ -1,7 +1,7 @@
-# v5-adapted deploy workflow — copy to .github/workflows/deploy.yml in the real repo.
-# Changes vs v4: trigger branch v4 -> v5, added "Install Quartz plugins" step,
-# robots.txt written inline (v5 has no robots plugin), plugin cache for speed.
-name: Deploy Quartz site to GitHub Pages
+# 블로그 본체는 Cloudflare Worker(wrangler.jsonc)로 dochigarden.com/blog 에 배포하고,
+# GitHub Pages(khy07181.github.io)에는 새 주소로 넘기는 리다이렉트 사이트만 배포한다.
+# 필요한 저장소 Secrets: CLOUDFLARE_API_TOKEN (Workers Scripts:Edit + Workers Routes:Edit), CLOUDFLARE_ACCOUNT_ID
+name: Deploy blog
 
 on:
   push:
@@ -37,16 +37,7 @@ jobs:
       - name: Install Quartz plugins
         run: npx quartz plugin install
       - name: Build Quartz
-        run: |
-          npx quartz build
-          # robots.txt at public root for GitHub Pages
-          cat > public/robots.txt <<'EOF'
-          User-agent: *
-          Allow: /
-          Sitemap: https://khy07181.github.io/sitemap.xml
-          EOF
-          # .nojekyll so GitHub Pages serves _-prefixed paths
-          touch public/.nojekyll
+        run: npx quartz build
       - name: Format sitemap.xml
         run: |
           if [ -f public/sitemap.xml ]; then
@@ -55,10 +46,21 @@ jobs:
             mv public/sitemap.formatted.xml public/sitemap.xml
             echo "Sitemap formatted successfully"
           fi
+      # robots.txt는 도메인 루트(dochigarden.com/robots.txt)라 dochigarden 저장소에서 관리한다.
+      - name: Deploy blog to Cloudflare (dochigarden.com/blog)
+        run: |
+          # Worker 에셋은 URL 경로를 미러링해야 하므로 public/ -> dist/blog/
+          rm -rf dist && mkdir dist && cp -R public dist/blog
+          npx --yes wrangler@4 deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Build GitHub Pages redirect site
+        run: scripts/github-pages-redirect.sh public redirect
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: public
+          path: redirect
 
   deploy:
     needs: build

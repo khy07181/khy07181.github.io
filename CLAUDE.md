@@ -10,7 +10,7 @@
 
 - **주 브랜치: `v5`** (Quartz 5.0) — GitHub 기본 브랜치이자 배포 브랜치
 - `v4`는 레거시 브랜치이며 자동 배포는 비활성화되어 있음 (Quartz 4.x)
-- 배포 사이트: https://khy07181.github.io/
+- 배포 사이트: https://dochigarden.com/blog (구 주소 https://khy07181.github.io/ 는 새 주소로 리다이렉트)
 
 ## 개발 명령어
 
@@ -42,7 +42,10 @@ npm run test      # tsx --test
 
 ## 배포 (중요)
 
-- 배포는 **GitHub Actions**(`.github/workflows/deploy.yml`)가 수행합니다. `v5` 브랜치에 push되면 CI 러너에서 `npx quartz build`를 실행하고 결과(`public/`)를 GitHub Pages로 업로드합니다. (gh-pages 브랜치 없음, Pages `build_type: workflow`)
+- 배포는 **GitHub Actions**(`.github/workflows/deploy.yml`)가 수행합니다. `v5` 브랜치에 push되면 CI 러너에서 `npx quartz build`를 실행하고:
+  - 결과(`public/`)를 `dist/blog/`로 옮겨 **Cloudflare Worker `dochigarden-blog`**(`wrangler.jsonc`, assets-only)로 배포합니다. 라우트 `dochigarden.com/blog`, `dochigarden.com/blog/*`만 가져가며, 루트 `dochigarden.com`은 별도 저장소 `khy07181/dochigarden`(Cloudflare Pages)가 서빙합니다. Secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`.
+  - GitHub Pages(khy07181.github.io)에는 `scripts/github-pages-redirect.sh`가 만든 **리다이렉트 사이트**(페이지별 canonical + meta refresh)만 올립니다.
+- `baseUrl`은 `dochigarden.com/blog`(하위 경로). 로컬 미리보기는 `--baseDir blog`로 `localhost:8080/blog`에서 열립니다.
 - **CI가 커밋된 `content/`를 빌드하므로 `content/`는 git에 실제 파일로 존재해야 합니다.** CI 러너에는 로컬 iCloud vault가 없으므로, `content`를 vault로 심볼릭 링크하면 빈 사이트가 배포됩니다 → **심링크 금지.**
 - 게시 흐름: **vault에서 편집 → `./publish.sh` → CI 배포.** (구 `npx quartz sync` 방식은 쓰지 않음)
 - `public/`은 `.gitignore` 처리됨 (CI가 생성).
@@ -88,7 +91,7 @@ v4의 커스텀 컴포넌트가 v5에서는 저장소 루트 `plugins/`의 로�
 - **분석**: Google Analytics (G-5LV1MFRSYJ)
 - **테마**: 라이트/다크 커스텀 색상 스킴
 - **폰트**: Schibsted Grotesk(헤더), Source Sans Pro(본문), IBM Plex Mono(코드)
-- **robots.txt**: v5에는 robots emitter가 없어 `deploy.yml`에서 인라인 생성
+- **robots.txt**: 도메인 루트 파일이라 이 저장소가 아니라 `khy07181/dochigarden` 저장소에서 관리
 - og-image 생성은 비활성화(`generateSocialImages: false`)
 
 ## 버전
