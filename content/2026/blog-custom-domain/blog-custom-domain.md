@@ -22,9 +22,9 @@ created: 2026-10-07T09:38
 updated: 2026-10-11T21:27
 ---
 
-## 블로그 주소 바꾸기
+## 블로그 주소 변경하기
 
-블로그의 주소를 `khy07181.github.io` 에서 `dochigarden.com/blog` 로 바꿨다.
+블로그의 주소를 `khy07181.github.io` 에서 `dochigarden.com/blog` 로 변경했다.
 
 언젠가 나만의 도메인 주소를 가지고 싶기도 했고 [[Cloister — A quiet Cloisterfor focused work|Cloister]] 를 소개할 사이트가 필요해 `dochigarden.com` 이라는 도메인을 샀는데, 블로그도 그 아래로 옮겨오기로 했다.
 
@@ -42,16 +42,16 @@ sitemap 파일도 정상이고, robots.txt 도 정상이고, 같은 sitemap 이 
 
 ---
 
-# sub domain vs sub directory
+## sub domain vs sub directory
 
 도메인 아래에 블로그를 두는 방법은 크게 두 가지다.
 
-|         | sub domain `blog.dochigarden.com`  | sub directory `dochigarden.com/blog` |
-| ------- | ---------------------------------- | ------------------------------------ |
-| 설정 난이도  | 쉬움 (GitHub Pages가 바로 지원, CNAME 하나) | 경로를 나눠주는 리버스 프록시·엣지 라우팅이 필요          |
-| 호스팅     | GitHub Pages 그대로                   | 보통 루트 사이트와 같은 플랫폼에서 처리               |
-| SEO     | 별개 사이트처럼 취급된다는 의견이 많음              | 루트 도메인과 평판을 공유                       |
-| 주로 쓰는 곳 | 개인·기술 블로그                          | 회사·제품 사이트의 블로그                       |
+|         | sub domain : `blog.dochigarden.com` | sub directory : `dochigarden.com/blog` |
+| ------- | ----------------------------------- | -------------------------------------- |
+| 설정 난이도  | 쉬움 (GitHub Pages가 바로 지원, CNAME 하나)  | 경로를 나눠주는 리버스 프록시·엣지 라우팅이 필요            |
+| 호스팅     | GitHub Pages 그대로                    | 보통 루트 사이트와 같은 플랫폼에서 처리                 |
+| SEO     | 별개 사이트처럼 취급된다는 의견이 많음               | 루트 도메인과 평판을 공유                         |
+| 주로 쓰는 곳 | 개인·기술 블로그                           | 회사·제품 사이트의 블로그                         |
 
 잠시 고민하다가 [Sindre Sorhus](https://sindresorhus.com/) 의 사이트도 블로그를 `/blog` 아래에 두고 있는 걸 보고 나도 같은 방식으로 정했다.
 
@@ -158,7 +158,7 @@ Worker는 코드 없이 정적 파일만 서빙하는 assets-only로 만들었�
 `khy07181.github.io` 같은 user site에 커스텀 도메인을 걸면, 그 아래 project site들까지 전부 그 도메인으로 넘어간다.
 
 앱 업데이트 피드가 엉뚱한 곳으로 리다이렉트돼서 앱 업데이트가 깨질 뻔했다.
-- ~~블로그 옮기다가 앱 업데이트를 망가뜨릴 뻔.~~
+- ~~블로그 옮기다가 앱 업데이트를 망가뜨릴 했다.
 
 대안: 페이지마다 리다이렉트 스텁 만들기
 
