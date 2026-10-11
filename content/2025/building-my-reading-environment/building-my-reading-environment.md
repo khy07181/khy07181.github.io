@@ -13,7 +13,7 @@ tags:
 draft: false
 published: 2025-11-16
 created: 2025-11-16T21:30
-updated: 2026-09-14T16:52
+updated: 2026-10-06T15:24
 ---
 
 세상에는 책보다 자극적이고 재미있는 것들이 너무 많아져, 예전처럼 자연스럽게 독서에 몰입하기가 점점 어려워지고 있다.
@@ -103,7 +103,7 @@ DRM 해제가 불가능해 스크린 캡처 후 PDF 또는 EPUB으로 변환해�
 2. [Clop](https://lowtechguys.com/clop/)으로 이미지 용량 최적화
 3. Mac 미리보기로 png 파일들을 pdf 파일로 변환
 4. [OwlOCR](https://www.owlocr.com/) 로 OCR 진행
-5. [Readwise Reader](https://khy07181.github.io/2026/readwise-reader) 업로드 및 iCloud 백업
+5. [[Readwise Reader]] 업로드 및 iCloud 백업
 
 #### CLI
 
