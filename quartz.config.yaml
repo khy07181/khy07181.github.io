@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 # Ported from v4 quartz.config.ts + quartz.layout.ts
 configuration:
-  pageTitle: "🪴 hayoung"
+  pageTitle: "hayoung"
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
@@ -150,7 +150,8 @@ plugins:
   - source: github:quartz-community/tag-page
     enabled: true
   # --- layout components (match v4 quartz.layout.ts) ---
-  - source: github:quartz-community/page-title
+  # local custom plugin: page title with the dochigarden logo (replaces quartz-community/page-title)
+  - source: ./plugins/dochi-page-title
     enabled: true
     layout:
       position: left

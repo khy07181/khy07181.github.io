@@ -193,12 +193,6 @@
       "commit": "832871da9ab33d52f904456c1a5e14f1b2057d83",
       "installedAt": "2026-06-03T13:16:36.714Z"
     },
-    "page-title": {
-      "source": "github:quartz-community/page-title",
-      "resolved": "https://github.com/quartz-community/page-title.git",
-      "commit": "a1c1fe0a9c6a5ce1acf6efa01d473a7d9850e2a3",
-      "installedAt": "2026-06-03T13:32:36.002Z"
-    },
     "reader-mode": {
       "source": "github:quartz-community/reader-mode",
       "resolved": "https://github.com/quartz-community/reader-mode.git",

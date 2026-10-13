@@ -1,0 +1,42 @@
+{
+  "name": "@local/dochi-page-title",
+  "version": "1.0.0",
+  "description": "Sidebar page title with the dochigarden logo (replaces quartz-community/page-title)",
+  "type": "module",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    },
+    "./components": {
+      "import": "./dist/components/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "peerDependencies": {
+    "preact": "^10.0.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "quartz": {
+    "name": "dochi-page-title",
+    "displayName": "Page Title",
+    "category": "component",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "dependencies": [],
+    "defaultOrder": 50,
+    "defaultEnabled": true,
+    "defaultOptions": {},
+    "components": {
+      "PageTitle": {
+        "displayName": "Page Title",
+        "defaultPosition": "left",
+        "defaultPriority": 10
+      }
+    }
+  }
+}
