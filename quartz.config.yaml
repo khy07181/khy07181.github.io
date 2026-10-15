@@ -147,6 +147,10 @@ plugins:
     enabled: true
   - source: github:quartz-community/folder-page
     enabled: true
+  # local page type: posts are page bundles (post/post.md -> post/index), which
+  # folder-page would claim; render them as content pages (graph, backlinks, TOC)
+  - source: ./plugins/bundle-page
+    enabled: true
   - source: github:quartz-community/tag-page
     enabled: true
   # --- layout components (match v4 quartz.layout.ts) ---
