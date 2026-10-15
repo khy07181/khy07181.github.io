@@ -22,26 +22,27 @@ configuration:
       body: Source Sans Pro
       code: IBM Plex Mono
     colors:
+      # dochigarden.com 팔레트(paper / ink / leaf / clay / honey)에 맞춤
       lightMode:
-        light: "#faf8f8"
-        lightgray: "#e5e5e5"
-        gray: "#b8b8b8"
-        darkgray: "#4e4e4e"
-        dark: "#2b2b2b"
-        secondary: "#284b63"
-        tertiary: "#84a59d"
-        highlight: rgba(143, 159, 169, 0.15)
-        textHighlight: "#fff23688"
+        light: "#f4efe3"
+        lightgray: "#ded6c2"
+        gray: "#9a9483"
+        darkgray: "#4a4e3f"
+        dark: "#34382c"
+        secondary: "#457a2f"
+        tertiary: "#a9582f"
+        highlight: rgba(69, 122, 47, 0.12)
+        textHighlight: "#d9b25e55"
       darkMode:
-        light: "#161618"
-        lightgray: "#393639"
-        gray: "#646464"
-        darkgray: "#d4d4d4"
-        dark: "#ebebec"
-        secondary: "#7b97aa"
-        tertiary: "#84a59d"
-        highlight: rgba(143, 159, 169, 0.15)
-        textHighlight: "#b3aa0288"
+        light: "#1e1b17"
+        lightgray: "#3a342b"
+        gray: "#7a7264"
+        darkgray: "#d9d1c0"
+        dark: "#ede6d6"
+        secondary: "#b2d494"
+        tertiary: "#e39c7c"
+        highlight: rgba(163, 188, 142, 0.12)
+        textHighlight: "#ddbb7244"
 plugins:
   # local transformer: inject custom <head> meta (google-site-verification, from v4 Head.tsx)
   - source: ./plugins/head-meta
@@ -216,12 +217,14 @@ plugins:
     layout:
       position: beforeBody
       priority: 10
+      condition: not-index
   # local fork of content-meta: dates as YYYY-MM-DD (v4 Date.tsx behavior)
   - source: ./plugins/content-meta
     enabled: true
     layout:
       position: beforeBody
       priority: 20
+      condition: not-index
   - source: github:quartz-community/tag-list
     enabled: true
     layout:

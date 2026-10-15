@@ -2,11 +2,6 @@
 
 // put your custom CSS here!
 
-// ported from v4 custom.scss — purple link/point color
-a {
-  color: #8a5cf5 !important;
-}
-
 // ported from v4 RecentNotes: display order title -> tags -> date, item separators, wrapping tags
 .recent-notes .recent-li .section {
   display: flex;
@@ -33,4 +28,20 @@ a {
   border-bottom: 1px solid var(--lightgray);
   padding-bottom: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+// 본문 링크가 주변 텍스트와 구분되도록 은은한 밑줄
+article p a,
+article li a,
+article td a {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--secondary) 45%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  &:hover {
+    text-decoration-color: currentColor;
+  }
+}
+article li a.tag-link {
+  text-decoration: none;
 }
