@@ -156,7 +156,7 @@ plugins:
     layout:
       position: left
       priority: 10
-  # local custom plugin: v4 SocialIcons (RSS / Email / GitHub sidebar icons)
+  # local custom plugin: v4 SocialIcons (Email / dochigarden / GitHub / RSS sidebar icons)
   - source: ./plugins/social-icons
     enabled: true
     layout:

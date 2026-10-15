@@ -69,7 +69,7 @@ v5에서는 플러그인을 **커뮤니티 플러그인**으로 분리해 `quart
 ### 로컬 커스텀 플러그인 (`plugins/`)
 v4의 커스텀 컴포넌트가 v5에서는 저장소 루트 `plugins/`의 로컬 플러그인으로 이전됨:
 - **`head-meta`**: 커스텀 `<head>` 메타 주입 (구 `Head.tsx`)
-- **`social-icons`**: 사이드바 RSS/Email/GitHub 아이콘 (구 `SocialIcons.tsx`)
+- **`social-icons`**: 사이드바 Email/dochigarden/GitHub/RSS 아이콘 (구 `SocialIcons.tsx`)
 - **`recent-notes`**: 인덱스 페이지에서만 최근 게시물 표시 (구 `RecnetNotesForIndex.tsx`)
 - **`content-meta`**, **`explorer`**
 

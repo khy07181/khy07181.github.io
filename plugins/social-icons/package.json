@@ -1,7 +1,7 @@
 {
   "name": "@local/social-icons",
   "version": "1.0.0",
-  "description": "Sidebar social links (RSS, Email, GitHub) for this blog (ported from v4 SocialIcons component)",
+  "description": "Sidebar social links (Email, dochigarden, GitHub, RSS) for this blog (ported from v4 SocialIcons component)",
   "type": "module",
   "license": "MIT",
   "main": "./dist/index.js",
