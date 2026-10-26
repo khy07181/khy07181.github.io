@@ -47,7 +47,7 @@ var links = [
   {
     href: "https://dochigarden.com/",
     label: "dochigarden",
-    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 2.6 16 10.4" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.7 12A4.6 4.6 0 0 1 12.9 12Z"/><path d="M2.38 9.85L0.78 9.26M3.37 8.07L2.05 7.01M4.88 6.71L3.96 5.28M6.75 5.89L6.33 4.25M8.77 5.72L8.9 4.02M10.75 6.19L11.41 4.63M12.47 7.28L13.59 6M13.76 8.85L15.23 8" fill="none" stroke-width="1.5"/></svg>`,
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 2.6 16 10.4" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.7 12A4.6 4.6 0 0 1 12.9 12ZM2.38 9.85L0.78 9.26M3.37 8.07L2.05 7.01M4.88 6.71L3.96 5.28M6.75 5.89L6.33 4.25M8.77 5.72L8.9 4.02M10.75 6.19L11.41 4.63M12.47 7.28L13.59 6M13.76 8.85L15.23 8" fill="none" stroke-width="1.5"/><circle cx="10" cy="10.5" r="0.9" stroke="none"/></svg>`,
   },
   {
     href: "https://github.com/khy07181",
